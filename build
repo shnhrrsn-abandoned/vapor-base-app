@@ -1,9 +1,9 @@
 #!/bin/sh
 
 rm -fr Packages .build
-echo "Downloading dependencies..."
-swift build &>/dev/null
-echo "Fixing SPM bug..."
-rm -rf Packages/*/Tests/ &>/dev/null
-echo "Building..."
+echo "Downloading dependencies…"
+swift build
+echo "Fixing SPM bug…"
+rm -rf Packages/*/Tests/ Packages/Jay*/*/JayExample Packages/Vapor*/*/VaporDev
+echo "Building…"
 swift build
