@@ -6,7 +6,7 @@ let package = Package(
         .Package(url: "https://github.com/qutheory/vapor.git", majorVersion: 0),
         .Package(url: "https://github.com/qutheory/vapor-stencil.git", majorVersion: 0),
         .Package(url: "https://github.com/qutheory/vapor-console.git", majorVersion: 0),
-        .Package(url: "git@git.egocloud.net:shnhrrsn/vapor-assets.git", majorVersion: 0),
+        .Package(url: "https://github.com/shnhrrsn/vapor-assets.git", majorVersion: 0),
     ],
     exclude: [
         "Deploy",

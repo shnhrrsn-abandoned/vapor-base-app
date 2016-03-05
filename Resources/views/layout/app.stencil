@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>{% block title %}Vapor{% endblock %}</title>
+
+		{% block styles %}{% endblock %}
+	</head>
+	<body>
+		{% block content.before %}{% endblock %}
+
+		<div class="container">
+			<div class="content">
+				{% block content %}{% endblock %}
+			</div>
+		</div>
+
+		{% block content.after %}{% endblock %}
+
+		{% block scripts %}{% endblock %}
+	</body>
+</html>

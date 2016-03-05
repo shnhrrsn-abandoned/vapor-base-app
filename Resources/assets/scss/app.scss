@@ -14,64 +14,65 @@ body {
 	position: relative;
 }
 
-
 a {
 	color: #92A8D1;
 	text-decoration: none;
 	border-bottom: 1px dotted;
+
+	&:hover {
+		color: #F7CAC9;
+	}
 }
 
-a:hover {
-	color: #F7CAC9;
-}
-
-div.wrapper {
+.container {
 	width: 100%;
 	max-width: 600px;
 	margin: 0 auto;
 	position: relative;
 	top: 50%;
 	transform: translateY(-50%);
-	margin-top: -25px; //adjust eye level
+	margin-top: -25px;
+	//adjust eye level
 }
 
 h1#logo {
 	text-indent: -9999px;
-	background-image: url(../images/vapor-logo.png);
+	background-image: url(../img/vapor-logo.png);
 	background-size: 100%;
 	width: 347.5px;
 	height: 84px;
 	margin: 0 auto;
 }
 
-nav.main {
+.nav {
 	text-align: center;
 	margin-top: 20px;
-}
-nav.main ul {
-	margin: 0;
-	padding: 0;
-}
-nav.main ul li {
-	display: inline-block;
-	padding: 0 5px;
+
+	ul {
+		margin: 0;
+		padding: 0;
+
+		li {
+			display: inline-block;
+			padding: 0 5px;
+		}
+	}
 }
 
-
-footer.main {
+.footer {
 	position: absolute;
 	width: 100%;
 	text-align: center;
 	bottom: 10px;
-}
 
-footer.main p {
-	margin: 0;
-	padding: 0;
-	color: #ccc;
-	font-weight: 300;
-}
+	p {
+		margin: 0;
+		padding: 0;
+		color: #ccc;
+		font-weight: 300;
 
-footer.main p a {
-	color: #ccc;
+		a {
+			color: #ccc;
+		}
+	}
 }

@@ -1,0 +1,24 @@
+{% extends "layout/app.stencil" %}
+
+{% block styles %}
+	<link rel="stylesheet" href="/assets/scss/app.scss">
+{% endblock %}
+
+{% block content %}
+			<h1 id="logo">Vapor</h1>
+
+			<nav class="nav">
+				<ul>
+					<li>Examples: </li>
+					<li><a href="/json">JSON</a></li>
+					<li><a href="/data/5?query=test">Request Data</a></li>
+					<li><a href="/session">Session</a></li>
+				</ul>
+			</nav>
+{% endblock %}
+
+{% block content.after %}
+	<footer class="footer">
+		<p>Powered by Swift. Built by <a href="http://tanner.xyz">Tanner</a>.</p>
+	</footer>
+{% endblock %}

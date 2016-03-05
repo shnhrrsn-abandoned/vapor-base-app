@@ -5,67 +5,22 @@ import VaporConsole
 
 let app = Application()
 
-(Asset.compilers["scss"] as? ScssCompiler)?.includePaths.append(Application.workDir + "/bower_components/bourbon/app/assets/stylesheets")
-
-app.get("/") { request in
-	do {
-		return try View(path: "welcome.html")
-	} catch _ {
-		return "Something went wrong."
-	}
-}
-
-app.get("json") { request in
-	return Json([
-		"number": 123,
-		"string": "test",
-		"array": [
-			0, 1, 2, 3
-		],
-		"dict": [
-			"name": "Vapor",
-			"lang": "Swift"
-		]
-	])
-}
-
-app.any("data/:id") { request in
-	return try Json([
-		"request.path": request.path,
-		"request.data": "\(request.data)",
-		"request.parameters": "\(request.parameters)",
-	])
-}
-
-app.get("session") { request in
-	let response: Response
-	do {
-		let json = try Json([
-			"session.data": "\(request.session)",
-			"request.cookies": "\(request.cookies)",
-			"instructions": "Refresh to see cookie and session get set."
-		]);
-		response = try Response(status: .OK, json: json)
-	} catch {
-		response = Response(error: "Invalid JSON")
-	}
-
-	request.session["name"] = "Vapor"
-	response.cookies["test"] = "123"
-
-	return response
-}
-
-app.get("heartbeat", handler: HeartbeatController().index)
-
-app.get("stencil") { request in
-	return try View(path: "template.stencil", context: [
-		"greeting": "Hello, world!"
-	])
-}
-
-app.providers.append(VaporStencil.Provider)
+// Add providers
 app.providers.append(VaporAssets.Provider)
+app.providers.append(BourbonProvider)
+app.providers.append(StencilProvider)
+
+// Add middleware
 app.middleware.append(SampleMiddleware)
 
-Console(app).run()
+// Register routes
+Routes.register(app)
+
+// Start up console
+let console = Console(app)
+
+// Register app commands
+Commands.register(console)
+
+// Run
+console.run()
