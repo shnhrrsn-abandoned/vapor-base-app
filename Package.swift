@@ -12,6 +12,7 @@ let package = Package(
         "Deploy",
         "Public",
         "Resources",
-		"Tests"
+        "bower_components",
+        "Tests"
     ]
 )

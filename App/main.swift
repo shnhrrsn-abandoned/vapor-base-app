@@ -5,6 +5,8 @@ import VaporConsole
 
 let app = Application()
 
+(Asset.compilers["scss"] as? ScssCompiler)?.includePaths.append(Application.workDir + "/bower_components/bourbon/app/assets/stylesheets")
+
 app.get("/") { request in
 	do {
 		return try View(path: "welcome.html")

@@ -1,0 +1,7 @@
+{
+	"name": "vapor-web",
+	"private": true,
+	"dependencies": {
+		"bourbon": "^4.2.6"
+	}
+}
