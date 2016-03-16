@@ -48,7 +48,7 @@ class MainController: Controller {
 			response = Response(error: "Invalid JSON")
 		}
 
-		request.session["name"] = "Vapor"
+		request.session?["name"] = "Vapor"
 		response.cookies["test"] = "123"
 
 		return response
