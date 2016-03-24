@@ -1,11 +1,12 @@
 import Vapor
+import VaporConsole
 import VaporStencil
 import VaporAssets
-import VaporConsole
 
 let app = Application()
 
 // Add providers
+app.providers.append(LoggingProvider)
 app.providers.append(VaporAssets.Provider)
 app.providers.append(BourbonProvider)
 app.providers.append(StencilProvider)

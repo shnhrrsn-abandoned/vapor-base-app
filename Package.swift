@@ -9,6 +9,7 @@ let package = Package(
         .Package(url: "https://github.com/shnhrrsn/vapor-assets.git", majorVersion: 0),
     ],
     exclude: [
+        "Config",
         "Deploy",
         "Public",
         "Resources",
