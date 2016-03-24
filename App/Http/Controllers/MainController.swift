@@ -1,8 +1,6 @@
 import Vapor
 
-class MainController: Controller {
-
-	required init() { }
+class MainController {
 
 	func index(request: Request) throws -> ResponseConvertible {
 		do {
