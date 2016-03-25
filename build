@@ -2,7 +2,7 @@
 
 rm -fr Packages .build
 echo "Downloading dependencies…"
-swift build
+swift build --fetch
 echo "Fixing SPM bug…"
 rm -rf Packages/*/Tests/ Packages/Jay*/*/JayExample Packages/Vapor*/*/VaporDev
 echo "Building…"
