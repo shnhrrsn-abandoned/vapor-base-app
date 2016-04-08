@@ -3,7 +3,7 @@ import Vapor
 class Routes {
 
 	class func register(app: Application) {
-		let main = MainController()
+		let main = MainController(application: app)
 
 		app.get("/", handler: main.index)
 		app.get("json", handler: main.json)

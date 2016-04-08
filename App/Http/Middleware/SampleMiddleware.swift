@@ -2,21 +2,21 @@ import Vapor
 
 class SampleMiddleware: Middleware {
 
-	class func handle(handler: Request.Handler, for application: Vapor.Application) -> Request.Handler {
-		return { request in
-			// You can manipulate the request before calling the handler
-			// and abort early if necessary, a good injection point for
-			// handling auth.
+    func respond(request: Request, chain: Responder) throws -> Response {
+	    var request = request
 
-			// return Response(status: .Forbidden, text: "Permission denied")
+		// You can manipulate the request before calling the chain
+		// and abort early if necessary, a good injection point for
+		// handling auth.
 
-			let response = try handler(request: request)
+		// return Response(status: .Forbidden, text: "Permission denied")
 
-			// You can also manipulate the response to add headers
-			// cookies, etc.
+	    var response = try chain.respond(request)
 
-			return response
-		}
+		// You can also manipulate the response to add headers
+		// cookies, etc.
+
+	    return response
 	}
 
 }

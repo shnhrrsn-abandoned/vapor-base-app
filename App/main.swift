@@ -6,13 +6,13 @@ import VaporAssets
 let app = Application()
 
 // Add providers
-app.providers.append(LoggingProvider)
+app.providers.append(LoggingProvider())
 app.providers.append(VaporAssets.Provider)
 app.providers.append(BourbonProvider)
 app.providers.append(StencilProvider)
 
 // Add middleware
-app.middleware.append(SampleMiddleware)
+app.middleware.append(SampleMiddleware())
 
 // Register routes
 Routes.register(app)

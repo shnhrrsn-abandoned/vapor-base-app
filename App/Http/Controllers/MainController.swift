@@ -1,17 +1,17 @@
 import Vapor
 
-class MainController {
+class MainController: BaseController {
 
-	func index(request: Request) throws -> ResponseConvertible {
+	func index(request: Request) throws -> ResponseRepresentable {
 		do {
-			return try View(path: "welcome.stencil")
+			return try self.app.view("welcome.stencil")
 		} catch {
 			Log.error("\(error)")
 			return "Something went wrong."
 		}
 	}
 
-	func json(request: Request) throws -> ResponseConvertible {
+	func json(request: Request) throws -> ResponseRepresentable {
 		return Json([
 			"number": 123,
 			"string": "test",
@@ -25,26 +25,22 @@ class MainController {
 		])
 	}
 
-	func data(request: Request) throws -> ResponseConvertible {
-		return try Json([
-			"request.path": request.path,
+	func data(request: Request) throws -> ResponseRepresentable {
+		return Json([
+			"request.path": request.uri.path ?? "null",
 			"request.data": "\(request.data)",
 			"request.parameters": "\(request.parameters)",
 		])
 	}
 
-	func session(request: Request) throws -> ResponseConvertible {
-		let response: Response
-		do {
-			let json = try Json([
-				"session.data": "\(request.session)",
-				"request.cookies": "\(request.cookies)",
-				"instructions": "Refresh to see cookie and session get set."
-			]);
-			response = try Response(status: .OK, json: json)
-		} catch {
-			response = Response(error: "Invalid JSON")
-		}
+	func session(request: Request) throws -> ResponseRepresentable {
+		let json = Json([
+			"session.data": "\(request.session)",
+			"request.cookies": "\(request.cookies)",
+			"instructions": "Refresh to see cookie and session get set."
+		])
+
+		var response = Response(status: .ok, json: json)
 
 		request.session?["name"] = "Vapor"
 		response.cookies["test"] = "123"

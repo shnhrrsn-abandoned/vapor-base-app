@@ -4,7 +4,7 @@ import libc
 
 class LoggingProvider: Vapor.Provider, ConsoleProvider {
 
-	static func boot(application: Application) {
+	func boot(application: Application) {
 		if application.config.get("app.debug", false) {
 			Log.enabledLevels = Log.Level.all
 		} else {
@@ -42,7 +42,7 @@ private class Logger: LogDriver {
 				break
 		}
 
-		self.console.output.writeln(message)
+		self.console.output.write(message)
 	}
 
 }
